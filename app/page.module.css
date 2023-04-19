@@ -74,10 +74,16 @@
 
 .center {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
   padding: 4rem 0;
+}
+
+.time {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .center::before {
@@ -97,7 +103,7 @@
 
 .center::before,
 .center::after {
-  content: '';
+  content: "";
   left: 50%;
   position: absolute;
   filter: blur(45px);

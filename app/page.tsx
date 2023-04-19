@@ -1,7 +1,12 @@
 import Image from 'next/image'
+import ky from 'ky'
 import styles from './page.module.css'
 
-export default function Home() {
+export default async function Home() {
+  const data = await ky
+    .get('http://worldtimeapi.org/api/timezone/UTC', { cache: 'no-cache' })
+    .json<{ unixtime: number }>()
+
   return (
     <main className={styles.main}>
       <div className={styles.description}>
@@ -29,6 +34,8 @@ export default function Home() {
       </div>
 
       <div className={styles.center}>
+        <div className={styles.time}>{data.unixtime}</div>
+
         <Image
           className={styles.logo}
           src="/next.svg"
